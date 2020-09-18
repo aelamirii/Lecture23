@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app = "ShoppingAsApp">
+  <head>
+    <meta charset="utf-8">
+    <script src = "angular.min.js"></script>
+    <script src = "app1.js"></script>
+    <link rel="stylesheet" href="style1.css">
+    <title> Custom Service with Provider + ng-if + ng-show + ng-hide </title>
+  </head>
+  <body>
+    <h1>  Custom Service with Provider + ng-if + ng-show + ng-hide  </h1>
+
+
+    <div ng-controller = "ShoppingListController as list">
+
+      <input type="text" ng-model = "list.ItemName" placeholder="Item Name">
+      <input type="text" ng-model = "list.ItemQuantity" placeholder="Item Quantity">
+      <button type="button" ng-click = "list.addItem();">Add a new Item</button>
+
+    <ol>
+      <li ng-repeat = "item in list.getItems">
+        {{ item.quantity }} of {{ item.name }}
+        <button type="button" ng-click = "list.RemoveItem($index);">Remove Item</button>
+      </li>
+    </ol>
+
+    <!-- <div class="error" ng-if = "list.errorMessage">
+      Error : {{ list.errorMessage }}
+    </div> -->
+
+    <!-- <div class="error" ng-show = "list.errorMessage">
+      Error : {{ list.errorMessage }}
+    </div> -->
+
+    <div class="error" ng-hide = "!list.errorMessage">
+      Error : {{ list.errorMessage }}
+    </div>
+
+    </div>
+
+  </body>
+</html>
